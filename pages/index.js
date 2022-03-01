@@ -1,24 +1,20 @@
-import * as React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import ProTip from '../src/ProTip';
-import Link from '../src/Link';
-import Copyright from '../src/Copyright';
+import * as React from "react";
+
+import Appbar from "../src/components/Appbar";
+import Drawer from "../src/components/Drawer";
+import Header from "../src/components/Header";
 
 export default function Index() {
+  const [state, setState] = React.useState(false);
+
+  const toggleDrawer = (open) => {
+    setState(open);
+  };
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Next.js example
-        </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
+    <>
+      <Appbar toggleDrawer={toggleDrawer} />
+      <Drawer state={state} toggleDrawer={toggleDrawer} />
+      <Header/>
+    </>
   );
 }
